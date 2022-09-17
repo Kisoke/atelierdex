@@ -20,12 +20,23 @@ export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }, nodeRepulsi
   const defs = svg.append('svg:defs')
 
   defs.append('svg:clipPath')
-    .attr('id', `#${elementId}-circleClipPath`)
+    .attr('id', `${elementId}-circleClipPath`)
     .append('circle')
     .attr('cx', nodeSize.w / 2)
     .attr('cy', nodeSize.h / 2)
     .attr('r', nodeSize.w)
     .attr('fill', '#FFF')
+
+  defs.append('svg:marker')
+    .attr('id', `${elementId}-arrowEndMarker`)
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+    .append("svg:path")
+    .attr("d", "M0,-5L10,0L0,5")
 
   const plotSpace = svg.append("g")
     .classed('plot-space', true)
@@ -37,6 +48,7 @@ export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }, nodeRepulsi
     .data(links)
     .join("line")
     .style("stroke", "#aaa")
+    .attr("marker-end", `url(#${`${elementId}-arrowEndMarker`})`)
 
   // Initialize the nodes
   const node = plotSpace
