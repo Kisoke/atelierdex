@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-export default (elementId, nodes, links) => {
+export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }) => {
   var margin = {top: 100, right: 150, bottom: 100, left: 150}
 
   var outerWidth  = 1600,
@@ -17,6 +17,16 @@ export default (elementId, nodes, links) => {
     .attr("viewBox", "0 0 " + outerWidth + " " + outerHeight)
     .classed('plot-svg', true)
 
+  const defs = svg.append('svg:defs')
+
+  defs.append('svg:clipPath')
+    .attr('id', `#${elementId}-circleClipPath`)
+    .append('circle')
+    .attr('cx', nodeSize.w/2)
+    .attr('cy', nodeSize.h/2)
+    .attr('r', nodeSize.w)
+    .attr('fill', '#FFF')
+
   const plotSpace = svg.append("g")
     .classed('plot-space', true)
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
@@ -30,11 +40,12 @@ export default (elementId, nodes, links) => {
 
   // Initialize the nodes
   const node = plotSpace
-    .selectAll("circle")
+    .selectAll("image")
     .data(nodes)
-    .join("circle")
-    .attr("r", 20)
-    .style("fill", "#69b3a2")
+    .join("image")
+    .attr("width", nodeSize.w)
+    .attr("height", nodeSize.h)
+    .attr("xlink:href", (item)=>item.image)
 
   // Let's list the force we wanna apply on the network
   const simulation = d3.forceSimulation(nodes)                 // Force algorithm is applied to data.nodes
@@ -49,13 +60,13 @@ export default (elementId, nodes, links) => {
   // This function is run at each iteration of the force algorithm, updating the nodes position.
   function ticked() {
     link
-      .attr("x1", function (d) { return d.source.x; })
-      .attr("y1", function (d) { return d.source.y; })
-      .attr("x2", function (d) { return d.target.x; })
-      .attr("y2", function (d) { return d.target.y; })
+      .attr("x1", function (d) { return d.source.x })
+      .attr("y1", function (d) { return d.source.y })
+      .attr("x2", function (d) { return d.target.x })
+      .attr("y2", function (d) { return d.target.y })
 
     node
-      .attr("cx", function (d) { return d.x + 6; })
-      .attr("cy", function (d) { return d.y - 6; })
+      .attr("x", function (d) { return d.x - nodeSize.w / 2 })
+      .attr("y", function (d) { return d.y - nodeSize.h / 2 })
   }
 }
