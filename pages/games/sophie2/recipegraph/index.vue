@@ -1,7 +1,9 @@
 <template>
   <section>
     <h2 class="text-3xl">Recipe Graph</h2>
-    <RecipeNetworkGraph :items="items" :recipes="recipes" class="w-1/2"/>
+    <div class="h-full">
+      <RecipeNetworkGraph :items="items" :recipes="recipes" class="w-3/4" />
+    </div>
   </section>
 </template>
 
