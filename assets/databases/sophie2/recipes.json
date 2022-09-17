@@ -1,0 +1,17 @@
+{
+  "red_neutralizer": {
+    "items": {
+      "red_flower": {
+        "amount": 1
+      }
+    },
+    "categories": {
+      "gunpowder": {
+        "amount": 1
+      },
+      "water": {
+        "amount": 1
+      }
+    }
+  }
+}

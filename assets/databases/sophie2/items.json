@@ -1,0 +1,31 @@
+{
+  "drinking_water": {
+    "level": 2,
+    "categories": [
+      "water"
+    ]
+  },
+  "red_flower": {
+    "level": 4,
+    "categories": [
+      "flowers",
+      "fuel"
+    ],
+    "image": "https://barrelwisdom.com/media/games/sophie2/items/red-flower.webp"
+  },
+  "black_sand": {
+    "level": 6,
+    "categories": [
+      "sand",
+      "gunpowder"
+    ]
+  },
+  "red_neutralizer": {
+    "level": 10,
+    "categories": [
+      "neutralizers",
+      "fuel"
+    ],
+    "image": "https://barrelwisdom.com/media/games/sophie2/items/red-neutralizer.webp"
+  }
+}
