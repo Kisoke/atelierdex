@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       }
     }
   },
-  
+
   vite: {
     server: {
       watch: {
@@ -18,8 +18,4 @@ export default defineNuxtConfig({
       },
     },
   },
-
-  css: [
-    '@/assets/css/main.css',
-  ],
 })
