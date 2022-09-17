@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }) => {
+export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }, nodeRepulsion= 400) => {
   var margin = {top: 100, right: 150, bottom: 100, left: 150}
 
   var outerWidth  = 1600,
@@ -22,8 +22,8 @@ export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }) => {
   defs.append('svg:clipPath')
     .attr('id', `#${elementId}-circleClipPath`)
     .append('circle')
-    .attr('cx', nodeSize.w/2)
-    .attr('cy', nodeSize.h/2)
+    .attr('cx', nodeSize.w / 2)
+    .attr('cy', nodeSize.h / 2)
     .attr('r', nodeSize.w)
     .attr('fill', '#FFF')
 
@@ -45,15 +45,15 @@ export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }) => {
     .join("image")
     .attr("width", nodeSize.w)
     .attr("height", nodeSize.h)
-    .attr("xlink:href", (item)=>item.image)
+    .attr("xlink:href", (item) => item.image)
 
   // Let's list the force we wanna apply on the network
   const simulation = d3.forceSimulation(nodes)                 // Force algorithm is applied to data.nodes
     .force("link", d3.forceLink()                               // This force provides links between nodes
-      .id(function (d) { return d.id; })                     // This provide  the id of a node
+      .id(function (d) { return d.id })                     // This provide  the id of a node
       .links(links)                                    // and this the list of links
     )
-    .force("charge", d3.forceManyBody().strength(-400))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+    .force("charge", d3.forceManyBody().strength(-nodeRepulsion))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
     .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
     .on("end", ticked)
 
