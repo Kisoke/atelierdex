@@ -50,6 +50,7 @@ export default (elementId, nodes, links, nodeSize= { w: 50, h: 50 }, nodeRepulsi
   // Let's list the force we wanna apply on the network
   const simulation = d3.forceSimulation(nodes)                 // Force algorithm is applied to data.nodes
     .force("link", d3.forceLink()                               // This force provides links between nodes
+      .distance(nodeSize.w * 1.5)
       .id(function (d) { return d.id })                     // This provide  the id of a node
       .links(links)                                    // and this the list of links
     )
