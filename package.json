@@ -8,7 +8,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.10"
+    "autoprefixer": "^10.4.11",
+    "nuxt": "3.0.0-rc.10",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8"
   },
   "dependencies": {
     "d3": "^7.6.1",
