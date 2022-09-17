@@ -74,13 +74,13 @@ const filteredItemsArray = computed(() => {
 const graphContainer = ref(null)
 
 function setupGraph() {
-  makeD3Graph(graphContainer.value.id, filteredItemsArray.value, linksArray.value)
+  return makeD3Graph(graphContainer.value.id, filteredItemsArray.value, linksArray.value)
 }
 
 onMounted(() => {
   graphContainer.value.id = `recipegraph-${uniqueId()}`
 
-  setupGraph()
+  console.log(setupGraph())
 })
 </script>
 

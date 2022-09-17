@@ -1,7 +1,7 @@
 <template>
   <section>
-    <h2>Recipe Graph</h2>
-    <RecipeGraph :items="items" :recipes="recipes"/>
+    <h2 class="text-3xl">Recipe Graph</h2>
+    <RecipeNetworkGraph :items="items" :recipes="recipes" class="w-1/2"/>
   </section>
 </template>
 
@@ -14,5 +14,5 @@ export default {
 <script setup>
 import items from '@/assets/databases/sophie2/items.json'
 import recipes from '@/assets/databases/sophie2/recipes.json'
-import RecipeGraph from '@/components/RecipeGraph.vue'
+import RecipeNetworkGraph from '@/components/RecipeNetworkGraph.vue'
 </script>
