@@ -16,17 +16,20 @@ export default (elementId, nodes, links) => {
     .attr("width", "100%")
     .attr("viewBox", "0 0 " + outerWidth + " " + outerHeight)
     .classed('plot-svg', true)
-    .append("g").classed('plot-space', true).attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+  const plotSpace = svg.append("g")
+    .classed('plot-space', true)
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
   // Initialize the links
-  const link = svg
+  const link = plotSpace
     .selectAll("line")
     .data(links)
     .join("line")
     .style("stroke", "#aaa")
 
   // Initialize the nodes
-  const node = svg
+  const node = plotSpace
     .selectAll("circle")
     .data(nodes)
     .join("circle")
