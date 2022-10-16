@@ -74,7 +74,7 @@ const filteredItemsArray = computed(() => {
 const graphContainer = ref(null)
 
 function setupGraph() {
-  makeD3Graph(graphContainer.value.id, filteredItemsArray.value, linksArray.value, { w: 100, h: 100 }, 400)
+  return makeD3Graph(graphContainer.value.id, filteredItemsArray.value, linksArray.value, { w: 100, h: 100 }, 400)
 }
 
 onMounted(() => {
