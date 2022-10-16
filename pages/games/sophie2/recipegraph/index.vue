@@ -2,7 +2,7 @@
   <section>
     <h2 class="text-3xl">Recipe Graph</h2>
     <div class="h-full">
-      <RecipeNetworkGraph :items="items" :recipes="recipes" class="w-3/4" />
+      <RecipeNetworkGraph :items="items.items" :recipes="recipes.items" class="w-3/4" />
     </div>
   </section>
 </template>
