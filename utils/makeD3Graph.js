@@ -153,8 +153,6 @@ function ForceGraph({
       .on("drag", dragged)
       .on("end", dragended);
   }
-
-  // return Object.assign(svg.node(), {scales: {color}});
 }
 
 export default (elementId, nodes, links, nodeSize = { w: 50, h: 50 }, nodeRepulsion = 400) => {

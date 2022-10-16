@@ -80,7 +80,7 @@ function setupGraph() {
 onMounted(() => {
   graphContainer.value.id = `recipegraph-${uniqueId()}`
 
-  console.log(setupGraph())
+  setupGraph()
 })
 </script>
 
